@@ -68,13 +68,14 @@ class VotacaoControllerIntegrationTest {
                         .withHeader("Content-Type", "application/json")
                         .withBody("{\"status\": \"ABLE_TO_VOTE\"}")));
 
-        VotoRequest request = new VotoRequest();
-        request.setCpfAssociado("12345678901");
-        request.setValor("SIM");
+        String requestJson = "{\n" +
+                "  \"cpfAssociado\": \"12345678901\",\n" +
+                "  \"valor\": \"SIM\"\n" +
+                "}";
 
         given()
             .contentType(ContentType.JSON)
-            .body(request)
+            .body(requestJson)
         .when()
             .post("/api/v1/sessoes/" + sessao.getId() + "/votos")
         .then()
@@ -95,13 +96,14 @@ class VotacaoControllerIntegrationTest {
                         .withHeader("Content-Type", "application/json")
                         .withBody("{\"status\": \"UNABLE_TO_VOTE\"}")));
 
-        VotoRequest request = new VotoRequest();
-        request.setCpfAssociado("98765432100");
-        request.setValor("SIM");
+        String requestJson = "{\n" +
+                "  \"cpfAssociado\": \"98765432100\",\n" +
+                "  \"valor\": \"SIM\"\n" +
+                "}";
 
         given()
             .contentType(ContentType.JSON)
-            .body(request)
+            .body(requestJson)
         .when()
             .post("/api/v1/sessoes/" + sessao.getId() + "/votos")
         .then()
