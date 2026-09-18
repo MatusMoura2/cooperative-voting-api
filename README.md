@@ -59,7 +59,7 @@ curl -X POST http://localhost:8080/api/v1/sessoes/<ID_DA_SESSAO>/votos \
 -H "Content-Type: application/json" \
 -d '{"cpfAssociado": "12345678901", "valor": "SIM"}'
 ```
-*(Nota: Lembre-se de enviar o voto em menos de 2 minutos, senão a sessão expira!)*
+*(Nota: Lembre-se de enviar o voto antes do tempo estipulado para a sessão expirar!)*
 
 ### 4. Contabilizar os Resultados
 ```bash
