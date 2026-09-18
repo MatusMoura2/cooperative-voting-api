@@ -8,11 +8,11 @@
 		<version>4.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cpfverification</groupId>
-	<artifactId>cpf-verification</artifactId>
+	<groupId>com.cooperativevoting</groupId>
+	<artifactId>cooperative-voting-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>cooperative-voting-api</name>
+	<description>Cooperative Voting API for Assemblies</description>
 	<url/>
 	<licenses>
 		<license/>
