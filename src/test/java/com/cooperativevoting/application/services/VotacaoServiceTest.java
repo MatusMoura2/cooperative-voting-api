@@ -74,6 +74,14 @@ class VotacaoServiceTest {
     }
 
     @Test
+    void shouldFailIfSessionNotFound() {
+        String sessaoId = "sessao-invalid";
+        when(sessaoRepository.findById(sessaoId)).thenReturn(Optional.empty());
+
+        assertThrows(NotFoundException.class, () -> votacaoService.registrarVoto(sessaoId, "123", VotoValor.SIM));
+    }
+
+    @Test
     void shouldFailIfAlreadyVoted() {
         String sessaoId = "sessao-1";
         String cpf = "123";

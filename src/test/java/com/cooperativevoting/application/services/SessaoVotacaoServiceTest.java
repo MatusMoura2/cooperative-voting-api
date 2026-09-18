@@ -62,4 +62,25 @@ class SessaoVotacaoServiceTest {
         assertThrows(NotFoundException.class, () -> sessaoService.abrirSessao("invalid", 10));
         verify(sessaoRepository, never()).save(any());
     }
+
+    @Test
+    void shouldOpenSessionSuccessfullyWithCustomTime() {
+        // Arrange
+        String pautaId = "pauta-1";
+        when(pautaRepository.findById(pautaId)).thenReturn(Optional.of(new Pauta(pautaId, "Pauta", "Desc")));
+        when(sessaoRepository.save(any(SessaoVotacao.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        // Act
+        SessaoVotacao result = sessaoService.abrirSessao(pautaId, 5);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(pautaId, result.getPautaId());
+        
+        // Assert duration is roughly 5 minutes
+        assertTrue(result.getDataFim().isAfter(result.getDataInicio().plusMinutes(4).plusSeconds(59)));
+        assertTrue(result.getDataFim().isBefore(result.getDataInicio().plusMinutes(5).plusSeconds(1)));
+        
+        verify(sessaoRepository, times(1)).save(any(SessaoVotacao.class));
+    }
 }
