@@ -15,22 +15,20 @@ Esta é uma API REST desenvolvida em Java com Spring Boot para gerenciamento de 
 ### 1. Pré-requisitos
 Certifique-se de ter instalado em sua máquina:
 - **Docker** e **Docker Compose**
-- **Java 17** (ou superior)
-- **Maven** (O projeto já inclui o `mvnw` (Maven Wrapper), então o Maven nativo é opcional)
 
-### 2. Subindo o Banco de Dados
-Acesse a pasta raiz do projeto (`cooperative-voting-api`) e execute o comando abaixo para iniciar o PostgreSQL:
+### 2. Subindo a Aplicação e o Banco de Dados (Tudo via Docker!)
+Acesse a pasta raiz do projeto (`cooperative-voting-api`) e execute o comando abaixo. Ele construirá a imagem da API Java (multi-stage build) e subirá junto com o PostgreSQL:
 ```bash
-docker-compose up -d
+docker-compose up -d --build
 ```
-Isso fará o download da imagem do Postgres e criará um contêiner rodando na porta `5432`.
+Isso criará dois contêineres:
+1. `cpf-verification-db`: O PostgreSQL rodando.
+2. `cpf-verification-api`: A API Spring Boot exposta na porta `8080`.
 
-### 3. Executando a Aplicação
-Com o banco de dados rodando, você pode iniciar a aplicação Spring Boot executando:
-```bash
-./mvnw spring-boot:run
-```
-A API ficará disponível na porta padrão: `http://localhost:8080`
+Aguarde alguns segundos até a API iniciar completamente. A API ficará disponível na porta: `http://localhost:8080`
+
+### 3. Acessando a Documentação (Swagger)
+Abra no seu navegador: `http://localhost:8080/swagger-ui.html`
 
 ## 🧪 Como testar os Endpoints
 
