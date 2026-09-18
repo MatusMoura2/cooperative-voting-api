@@ -11,7 +11,9 @@ import java.util.Map;
 public class CpfValidationClientAdapter implements CpfValidationPort {
 
     private final RestTemplate restTemplate;
-    private static final String URL = "https://user-info.herokuapp.com/users/{cpf}";
+    
+    @org.springframework.beans.factory.annotation.Value("${external.api.cpf.url:https://user-info.herokuapp.com/users/{cpf}}")
+    private String url;
 
     public CpfValidationClientAdapter(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -21,7 +23,7 @@ public class CpfValidationClientAdapter implements CpfValidationPort {
     public boolean canVote(String cpf) {
         try {
             @SuppressWarnings("unchecked")
-            Map<String, String> response = restTemplate.getForObject(URL, Map.class, cpf);
+            Map<String, String> response = restTemplate.getForObject(url, Map.class, cpf);
             return response != null && "ABLE_TO_VOTE".equals(response.get("status"));
         } catch (HttpClientErrorException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
