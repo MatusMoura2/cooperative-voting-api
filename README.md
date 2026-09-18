@@ -23,12 +23,12 @@ docker-compose up -d --build
 ```
 Isso criará dois contêineres:
 1. `cpf-verification-db`: O PostgreSQL rodando.
-2. `cpf-verification-api`: A API Spring Boot exposta na porta `8080`.
+2. `cpf-verification-api`: A API Spring Boot exposta na porta `8081`.
 
-Aguarde alguns segundos até a API iniciar completamente. A API ficará disponível na porta: `http://localhost:8080`
+Aguarde alguns segundos até a API iniciar completamente. A API ficará disponível na porta: `http://localhost:8081`
 
 ### 3. Acessando a Documentação (Swagger)
-Abra no seu navegador: `http://localhost:8080/swagger-ui.html`
+Abra no seu navegador: `http://localhost:8081/swagger-ui.html`
 
 ## 🧪 Como testar os Endpoints
 
