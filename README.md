@@ -1,10 +1,11 @@
 # API de Votação Cooperativa
 
-Esta é uma API REST desenvolvida em Java com Spring Boot para gerenciamento de assembleias e sessões de votação em cooperativas.
+Esta é uma API REST desenvolvida em Java com Spring Boot para gerenciamento de assembleias e sessões de votação em cooperativas. A API conta com documentação interativa provida pelo Swagger.
 
 ## 🚀 Tecnologias Utilizadas
-- **Java 17+** (A aplicação usa Java recente)
-- **Spring Boot 3** (Web, Data JPA, Validation)
+- **Java 17**
+- **Spring Boot 4.1.1** (Web, Data JPA, Validation)
+- **Swagger (Springdoc OpenAPI 2.8.6)** (Para documentação da API)
 - **PostgreSQL** (Banco de dados relacional)
 - **Docker & Docker Compose** (Para subir o banco de dados)
 - **Arquitetura Hexagonal** (Ports and Adapters)
